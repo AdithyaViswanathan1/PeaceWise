@@ -102,14 +102,54 @@ In the journey to finding the best hyper-parameters for the models mentioned abo
 ### Dialog Tree
 ![PeaceWise Dialog Tree](/logic_diagram.drawio.png)
 
-### User Storage
-![User models]()
+### User Memory
+```
+{
+    "Name": "abraham",
+    "Questions": [
+        "Howdy",
+        "I am depressed",
+        "define mental health?",
+        "Am I depressed?",
+        "What are some ways to treat mental illness?",
+        "Who created you?",
+        "Who made you?",
+        "Thank you"
+    ],
+    "Likes": [],
+    "Dislikes": [
+        "I avoid peanuts",
+        "Thank you so much",
+        "I also avoid rubber tennis balls"
+    ],
+    "Feedback": [
+        "really impressive responses"
+    ]
+}
+```
 
-Sample user files: abraham.json and monica.json
-“Abraham” and “Monica” refers to the name that the user entered when program prompted them in the beginning. This file holds the following fields and information:
-•	Name: user’s chosen name
-•	Questions: questions that user has asked
-•	Likes: information that user has provided about their interests
-•	Dislikes: information that user has provided about their disinterests
-•	Feedback: information that user has provided about their experience with chatbot (can be positive or negative comments)
+Sample user file: `/users/abraham.json`
+
+“Abraham” refers to the name that the user entered when program prompted them in the beginning. This file holds the following fields and information:
+- Name: user’s chosen name
+- Questions: questions that user has asked
+- Likes: information that user has provided about their interests
+- Dislikes: information that user has provided about their disinterests
+- Feedback: information that user has provided about their experience with chatbot (can be positive or negative comments)
+
 Fields start as empty lists, and can grow according to what questions are asked by user.
+
+## Evaluation
+Strengths:
+- Model can predict well even when query is slightly different than what it has been trained on, and the answer is correct and very relevant
+- Answers are coherent and understandable
+- Able to handle different examples of small talk and casual talk (greetings, expressing feelings, etc.)
+- Response time from user entering query to retrieving answer is almost instantaneous
+- Saving user’s information is flawless.
+- Getting user’s previous feedback, likes, and dislike answers and asking new question is working well.
+
+Weaknesses:
+- Can be more personalized. Currently relying on few versions of greetings, confusion, and personal questions.
+- Does not build upon previous mental health queries.
+- Unfamiliar questions can be handled better.
+
