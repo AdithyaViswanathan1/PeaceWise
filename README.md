@@ -98,4 +98,5 @@ Compared to the previous SVC model, the Multinomial Naïve Bayes model performed
 ### GridSearchCV
 In the journey to finding the best hyper-parameters for the models mentioned above, GridSearchCV was an enormous asset. It did an exhaustive search over all selected hyper-parameter values and found the best-performing set. The automated tuning process excellently optimized model performance and helped me achieve the best predictions for my data. The “best parameters” listed in the ML models above were derived from GridSearchCV.
 
-
+## Dialog Tree
+![PeaceWise Dialog Tree](/logic_diagram.drawio.png)
