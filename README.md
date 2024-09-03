@@ -28,12 +28,60 @@ Even after adding my secondary dataset, I felt the size of my dataset to be inad
 ### Reformatting data
 Now it is time to tackle my primary dataset. I noticed that each row contained multiple questions and answers, so it would be necessary to extract questions into their own rows. This is done so the model only trains on one question and label at a time. The number of responses can still be numerous. I did this by creating a new row for each additional question that appears in a given row in my primary dataset. This resulted in approximately double the rows from the original primary dataset. For my secondary dataset, I had to extract the questions and answers, which were stored in the same column. I used regular expressions to separate the sentences into question and answer. Then, I applied the same transformation I made on my primary dataset; extract questions into their own rows so that each row contained only one question. Doing this to the primary and secondary dataset resulted in massive growth of the dataset size; I increased my dataset from 250 instances to nearly 1200.
 
-### Data Analysis
-The purpose of data analysis was to learn more about my data before diving into model building. First, I plotted the distribution of my tag column (class label). Specifically, I plotted the top 15 tags. My highest-occurring label was “greeting”. Due to my augmentation, certain Q/A about mental health made it into my distribution as well. Next, I plotted the distribution of the responses column. This was done to see which type of question had the most answers. It ended up being tags like “about”, “casual”, “stressed”, and “anxious”. The fact that mental health tags had a lot of responses was a sign of good training, as it would lead to varied answers to these common mental health questions from the user. Finally, I created a word cloud of the training data (questions) as it visually displays the most common words with relative size.
-
 ### Final Pre-processing
 Finally, in order to prepare my data for inputting into a model, split the data into X (training) and Y (label). X is the “pattern” column and Y is the “tag” column. Then, for each row, I tokenized, lowercased, and lemmatized each word, and removed stopwords. This lead my total training instances to be round 1200. As previously mentioned, I kept training and testing data constant so that future iterations and models would receive the same data for the purpose of equal comparison and analysis afterward.
 
+## Data Analysis
+The purpose of data analysis was to learn more about my data before diving into model building. First, I plotted the distribution of my tag column (class label). Specifically, I plotted the top 15 tags. My highest-occurring label was “greeting”. Due to my augmentation, certain Q/A about mental health made it into my distribution as well. Next, I plotted the distribution of the responses column. This was done to see which type of question had the most answers. It ended up being tags like “about”, “casual”, “stressed”, and “anxious”. The fact that mental health tags had a lot of responses was a sign of good training, as it would lead to varied answers to these common mental health questions from the user. Finally, I created a word cloud of the training data (questions) as it visually displays the most common words with relative size.
 
+## NLP Techniques
+
+## ML Techniques
+
+### Support Vector Classifier (SVC)
+One of the models I experimented with was SVC (Support Vector Classifier). Since this is a classification problem (classifying a user question to a category label), SVC would be one of the ideal models. Although SVC is usually for binary classification, it makes use of “one-versus-one” approach for multi-class classification. This is done behind-the-scenes by sklearn training a classifier for every pair of classes. For context, I split the dataset into questions as model input, and tag as model output. Details regarding dataset and its properties will be discussed in “Datasets and Cleaning” section. Then, I chose to train on 80% of data and test on 20%. 
+
+This model proved to be very successful, and here is an overview of the performance:
+
+`Best parameters: {'C': 4, 'gamma': 0.5, 'kernel': 'sigmoid'}`
+
+`Accuracy: 0.923`
+
+`Precision: 0.916`
+
+`Recall: 0.923`
+
+`F1-score: 0.912`
+
+`Hamming Loss: 0.076`
+
+`Jaccard Similarity: 0.894`
+
+Precision, recall, and f1 are standard metrics used for classification, and they represent the predictions of this multi-class classification problem. Nevertheless, they show that the model can predict labels very well. Hamming loss was a new metric which I thought would be useful. It essentially counts how many labels were incorrectly predicted. Since this is a loss metric, a low value is better, and the result shown is very good. Finally, I chose to include Jaccard Similarity, which is very similar to accuracy, but is seen apart since it looks for overlap in label sets, not just individual predictions. Therefore, it is more holistic than accuracy. Overall, the performance is very satisfactory.
+
+### Multinomial Naïve Bayes (MNB)
+For a multi-class classification problem, this is one of the most common solutions. It performs well in large dimensional spaces, and is very efficient for text classification. It relies on the assumption that features (words in sentences) are conditionally independent given the class, which is a reasonable assumption for many text classification problems. It also works well in large datasets due to its favorable scaling properties. One thing I noticed was that the model trained very fast. For context, I split the dataset into questions as model input, and tag as model output. Then, I chose to train on 80% of data and test on 20%. Details regarding dataset and its properties will be discussed in “Datasets and Cleaning” section.
+
+This model resulted in slightly better performance than SVC, which is why I ultimately chose it for my chatbot predictions. Here is an overview of the performance:
+
+
+`'Best Parameters: {'alpha': 0.005, 'fit_prior': True}'`
+
+`Accuracy: 0.949`
+
+`Precision: 0.957`
+
+`Recall: 0.949`
+
+`F1-score: 0.945`
+
+`Hamming Loss: 0.050`
+
+`Jaccard Similarity 0.927`
+
+Compared to the previous SVC model, the Multinomial Naïve Bayes model performed a bit better. I chose to include both these models in my report as it shows the process I went through to find the optimal model. It is rare for an ML engineer to find the best model on the first try, so I wanted to incorporate different strategies to reveal the reality of building a project from start to finish. Hamming loss was lower than SVC, and Jaccard similarity was a bit higher. These models were trained on identical train sets as well as tested and evaluated on the same test sets. This ensured consistency in results and equal comparison of performance. Overall, the performance is very commendable. For clarity, all chatbot predictions are using this model.
+
+### GridSearchCV
+In the journey to finding the best hyper-parameters for the models mentioned above, GridSearchCV was an enormous asset. It did an exhaustive search over all selected hyper-parameter values and found the best-performing set. The automated tuning process excellently optimized model performance and helped me achieve the best predictions for my data. The “best parameters” listed in the ML models above were derived from GridSearchCV.
 
 
