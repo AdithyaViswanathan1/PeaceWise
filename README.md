@@ -98,5 +98,18 @@ Compared to the previous SVC model, the Multinomial Naïve Bayes model performed
 ### GridSearchCV
 In the journey to finding the best hyper-parameters for the models mentioned above, GridSearchCV was an enormous asset. It did an exhaustive search over all selected hyper-parameter values and found the best-performing set. The automated tuning process excellently optimized model performance and helped me achieve the best predictions for my data. The “best parameters” listed in the ML models above were derived from GridSearchCV.
 
-## Dialog Tree
+## Communication Pipeline
+### Dialog Tree
 ![PeaceWise Dialog Tree](/logic_diagram.drawio.png)
+
+### User Storage
+![User models]()
+
+Sample user files: abraham.json and monica.json
+“Abraham” and “Monica” refers to the name that the user entered when program prompted them in the beginning. This file holds the following fields and information:
+•	Name: user’s chosen name
+•	Questions: questions that user has asked
+•	Likes: information that user has provided about their interests
+•	Dislikes: information that user has provided about their disinterests
+•	Feedback: information that user has provided about their experience with chatbot (can be positive or negative comments)
+Fields start as empty lists, and can grow according to what questions are asked by user.
