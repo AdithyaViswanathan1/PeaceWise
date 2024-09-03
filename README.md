@@ -35,6 +35,20 @@ Finally, in order to prepare my data for inputting into a model, split the data 
 The purpose of data analysis was to learn more about my data before diving into model building. First, I plotted the distribution of my tag column (class label). Specifically, I plotted the top 15 tags. My highest-occurring label was “greeting”. Due to my augmentation, certain Q/A about mental health made it into my distribution as well. Next, I plotted the distribution of the responses column. This was done to see which type of question had the most answers. It ended up being tags like “about”, “casual”, “stressed”, and “anxious”. The fact that mental health tags had a lot of responses was a sign of good training, as it would lead to varied answers to these common mental health questions from the user. Finally, I created a word cloud of the training data (questions) as it visually displays the most common words with relative size.
 
 ## NLP Techniques
+### Tokenize sentences
+Prior to feeding in my dataset to the model for training, I iterated through each row and tokenized each sentence. This was done in order to help apply further transformations on the data. The following points will describe subsequent processing steps.
+
+### Lower-case words
+In order to standardize the vocabulary, I lower-cased every word after tokenizing. This will aid in generalizing words that may differ in case due to grammatical reasons, like being the first word in a sentence. In summary, this was done to avoid treating two identical words as different (ex. “My” and “my”).
+
+### Remove stopwords and punctuation
+Stopwords mostly do not contribute to the meaning of the text. Therefore, I removed them and left only the content words. This would help the model focus on the words which make the sentence representative of their topic or meaning. For example, “What is the cause of my stress?” will be reduced to [“cause”, “stress”].
+
+### Lemmatization
+This step was done for a similar reason to lower-casing. This is to normalize words that look different but are indeed the same content word. It also reduces vocabulary size as a result, which helps model efficiency and generalization. For example, it would reduce “running”, “ran”, and “runs” to “run”. 
+
+### TF-IDF Vectorizer
+This step was performed in order for the training data to be interpreted by the model during training. TF-IDF vectorizer creates a document-term matrix. In a document-term matrix, each row represents a document, and each column represents a unique term (word) in the vocabulary. This helps the model learn the importance of each term in each sentence and find patterns in higher dimensional space. Although the resulting matrix is sparse for each instance, it lead to impressive results. The label values remain as text due to SVC and MNB’s capability to handle them.
 
 ## ML Techniques
 
