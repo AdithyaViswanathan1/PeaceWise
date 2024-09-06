@@ -153,3 +153,68 @@ Weaknesses:
 - Does not build upon previous mental health queries.
 - Unfamiliar questions can be handled better.
 
+## Sample Chat
+Welcome! My name is Pandora, your mental health assistant. What is your name?
+
+> Monica
+
+Hello Monica! I'm your mental health companion. What would you like to know about mental health?
+
+Start chatting or enter 'quit' to exit the program
+
+monica > Who are you?
+
+PeaceWise > Hello there! I am your empathetic Mental Health conversational chatbot, designed to provide personalized suggestions and support. My purpose is to lend a listening ear, offer guidance, and assist you in navigating through any mental health challenges you might be facing. Feel free to share your thoughts and concerns, and I'm here to help you to the best of my abilities. Remember, you are not alone, and I'm here to support you throughout this journey.
+
+monica > Who made you?
+
+PeaceWise > I was created by Adithya Viswanathan.
+
+monica > How are you?
+
+PeaceWise > Hello! I am good. How are you feeling today? 
+
+monica > I am feeling so lonely
+
+PeaceWise > Why do you think you feel this way?
+
+monica > I feel so worthless
+
+PeaceWise > It's only natural to feel this way. Tell me more. What else is on your mind?
+
+monica > My dad passed away
+
+PeaceWise > I'm sorry to hear that. If you want to talk about it. I'm here.
+
+Just wondering monica, what are your interests?
+
+Thank you for your response!
+
+Before we dive deeper into the previous topic, I wanted to ask about your preferences. Are there any things that you'd rather pass on or avoid?
+Thank you for your response!
+
+monica > Can people with mental illness recover?
+
+PeaceWise > When healing from mental illness, early identification and treatment are of vital importance. Based on the nature of the illness, there are a range of effective treatments available. For any type of treatment, it is essential that the person affected is proactive and fully engaged in their own recovery process.
+
+ Before I forget, I'm curious to know about any activities, foods, or preferences you don't like?You previously said one of your dislikes was "I try to avoid city driving due to traffic". What else would you like to add on?
+
+Thank you for your response!
+
+monica > Where can I find a support group
+
+PeaceWise > There are several places you can explore to find a support group that suits your needs:
+
+monica > Thank you for the help
+
+PeaceWise > Happy to help!
+
+Before we move on, do you mind giving me some feedback about how this conversation is going monica?
+
+Thank you for your response!
+
+monica > See you later
+
+PeaceWise > See you later.
+
+
